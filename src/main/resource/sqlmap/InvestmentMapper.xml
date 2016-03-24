@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bryant.mybatis.venda.mapper.InvestmentMapper">
+	<select id="getInvestmentList" resultType="com.bryant.mybatis.venda.model.Investment">
+		select * from qly_shd_investment
+	</select>
+	
+	<select id="getInvestmentById" parameterType="java.lang.String" resultType="com.bryant.mybatis.venda.model.Investment">
+		select * from qly_shd_investment where investmentid=#{investmentid}
+	</select>
+	
+	<insert id="insert" parameterType="com.bryant.mybatis.venda.model.Investment">
+		insert into qly_shd_investment (investmentid, tenderid) values
+		(#{investmentid}, #{tenderid})
+	</insert>
+	
+	<update id="update" parameterType="com.bryant.mybatis.venda.model.Investment">
+		update qly_shd_investment set tenderid=#{tenderid} where investmentid=#{investmentid}
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.String">
+		delete from qly_shd_investment where investmentid=#{investmentid}
+	</delete>
+</mapper>
